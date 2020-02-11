@@ -3,18 +3,18 @@ package com.carlospinan.livepreviewcompose
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.Composable
-import androidx.compose.ambient
 import androidx.ui.core.Alignment
-import androidx.ui.core.ContextAmbient
+import androidx.ui.core.Clip
 import androidx.ui.core.Text
 import androidx.ui.core.setContent
-import androidx.ui.foundation.SimpleImage
+import androidx.ui.foundation.DrawImage
 import androidx.ui.foundation.shape.corner.CircleShape
+import androidx.ui.foundation.shape.corner.RoundedCornerShape
 import androidx.ui.graphics.Color
-import androidx.ui.graphics.imageFromResource
 import androidx.ui.layout.*
 import androidx.ui.material.*
 import androidx.ui.material.surface.Surface
+import androidx.ui.res.imageResource
 import androidx.ui.tooling.preview.Preview
 import androidx.ui.unit.dp
 
@@ -60,7 +60,10 @@ fun TutorialTemplate(
 @Composable
 fun PostCardTop(post: Post) {
 
-    val context = ambient(key = ContextAmbient)
+    // UnaryPlus is now deprecated
+    // val context = ambient(key = ContextAmbient)
+
+    val typography = MaterialTheme.typography()
 
     Container(
         modifier = LayoutPadding(16.dp),
@@ -75,16 +78,20 @@ fun PostCardTop(post: Post) {
                 modifier = LayoutWidth.Fill,
                 height = 160.dp
             ) {
-                SimpleImage(image = imageFromResource(context.resources, post.resource))
+                Clip(shape = RoundedCornerShape(16.dp)) {
+                    DrawImage(image = imageResource(id = post.resource))
+                }
             }
 
-            Text(text = post.title, style = MaterialTheme.typography().h5)
-            Text(text = post.author, style = MaterialTheme.typography().subtitle1)
+            Spacer(LayoutHeight(16.dp))
+
+            Text(text = post.title, style = typography.h5)
+            Text(text = post.author, style = typography.subtitle1)
 
             Row {
                 Text(
                     text = "${post.date} - ${post.timeReading} min read",
-                    style = MaterialTheme.typography().caption.copy(
+                    style = typography.subtitle1.copy(
                         color = Color.Gray
                     )
                 )
@@ -107,6 +114,12 @@ fun PreviewDarkTutorialTemplate() {
     TutorialTemplate(
         colors = darkColorPalette()
     )
+}
+
+@Preview("Default Colors With Scaling", fontScale = 1.5f, heightDp = 300)
+@Composable
+fun PreviewScalingTutorialTemplate() {
+    TutorialTemplate()
 }
 
 data class Post(
