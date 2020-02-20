@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Application/Application.iml" filepath="$PROJECT_DIR$/.idea/modules/Application/Application.iml" group="XYZTouristAttractions/Application" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Shared/Shared.iml" filepath="$PROJECT_DIR$/.idea/modules/Shared/Shared.iml" group="XYZTouristAttractions/Shared" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Wearable/Wearable.iml" filepath="$PROJECT_DIR$/.idea/modules/Wearable/Wearable.iml" group="XYZTouristAttractions/Wearable" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/XYZTouristAttractions.iml" filepath="$PROJECT_DIR$/.idea/modules/XYZTouristAttractions.iml" group="XYZTouristAttractions" />
+    </modules>
+  </component>
+</project>
